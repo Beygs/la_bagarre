@@ -1,16 +1,19 @@
 # frozen_string_literal: true
 
+# Classe qui gère les joueurs
 class Player
   attr_accessor :name, :life_points, :max_health
 
   def initialize(name, life_points = 10)
     @name = name
+    # max_health me permet de gérer les barres de dommages quel que soit le nombre de points de vie
     @max_health = life_points
     @life_points = life_points
     @win_width = IO.console.winsize[1]
   end
 
   def show_state
+    # Affichage de messages différents selon le pourcentage de vie
     life_points = @life_points.to_f / @max_health * 100
     case life_points
     when 90..100 then wonderful

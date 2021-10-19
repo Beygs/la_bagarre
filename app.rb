@@ -19,6 +19,7 @@ round = 1
 while player1.life_points.positive? && player2.life_points.positive?
   system 'clear'
 
+  # IO.console.winsize[1] me permet de récupérer la largeur du terminal pour centrer le texte
   puts "Voici l'état des joueurs :".center(IO.console.winsize[1])
   puts
 
@@ -39,11 +40,9 @@ while player1.life_points.positive? && player2.life_points.positive?
 
   player1.attacks(player2)
   puts
-  sleep 3.5
-  if player2.life_points.positive?
-    player2.attacks(player1)
-    sleep 3.5
-  end
+  player2.attacks(player1) if player2.life_points.positive?
+
+  sleep 2
 
   round += 1
 end

@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Ce module permet de créer toutes les différentes armes disponibles
 module Weapons
   WEAPONS = [
     Weapon.new('pichenette', '👈', 1),

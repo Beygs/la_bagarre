@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Classe spéciale pour les choix de l'utilisateur in game
 class UserActionsMenu < Menu
   def initialize(actions, enemies, user)
     super(actions)
@@ -13,8 +14,10 @@ class UserActionsMenu < Menu
 
     system 'clear'
 
+    # Affichage de la barre de vie du joueur
     puts "#{user_health_bar}\n\nEnnemis en vue :"
 
+    # Affichage de la barre de vie des ennemis
     @enemies.each { |e| puts enemy_health_bar(e) }
 
     puts
@@ -30,6 +33,7 @@ class UserActionsMenu < Menu
   def enemy_health_bar(enemy)
     life_points = enemy.life_points.to_f / enemy.max_health * 10
     bar = '█'
+    # Couleur de la barre de vie différente selon le pourcentage de vie
     case life_points
     when 7..10 then bar = "\e[32m#{bar}\e[0m"
     when 4..6 then bar = "\e[33m#{bar}\e[0m"
@@ -38,6 +42,7 @@ class UserActionsMenu < Menu
     "#{enemy.name.ljust(15)} #{bar * life_points}#{'▒' * (10 - life_points)}"
   end
 
+  # Même chose pour la barre de vie du joueur
   def user_health_bar
     life_points = @user.life_points / 10
     bar = '█'

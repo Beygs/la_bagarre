@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Création d'une armes
 class Weapon
   attr_accessor :name, :emoji, :damage
 

@@ -32,6 +32,7 @@ enemies = [
 while player.life_points.positive? && enemies.inject(0) { |s, e| s + e.life_points }.positive?
   player.show_state
 
+  # Pour des explications sur le menu, voir la classe Menu
   def menu_display(actions, selected, enemies)
     actions_display = actions.dup
 
@@ -85,14 +86,11 @@ while player.life_points.positive? && enemies.inject(0) { |s, e| s + e.life_poin
   else player.attacks(enemies[selected - 2])
   end
 
-  sleep 2
-
   enemies.each do |enemy|
     next unless enemy.life_points.positive?
 
     puts
     enemy.attacks(player)
-    sleep 2
   end
 
   puts

@@ -43,6 +43,8 @@ difficulty = Menu.new([
 
 settings = Menu::DIFFICULTY[difficulty.menu_choice]
 
+# Pendant que mon objet my_game est créé (ça peut prendre du temps selon le nombre d'ennemis)
+# , j'affiche l'écran de chargement
 load = Thread.new { Game.new(name, settings[0], settings[1]) }
 Display.loading_screen
 my_game = load.value
@@ -50,9 +52,7 @@ load.exit
 
 while my_game.is_still_ongoing?
   my_game.menu
-
   my_game.enemies_attack
-
   my_game.new_players_in_sight
 end
 
